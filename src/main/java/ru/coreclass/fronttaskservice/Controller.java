@@ -16,7 +16,7 @@ public class Controller {
     @Autowired
     ExampleDAO exampleDAO;
 
-    @GetMapping("/table")
+    @GetMapping("/api/table")
     public List<ExampleDTO> testMethod(@RequestParam(required = false) Integer id,
                                        @RequestParam(required = false) String name,
                                        @RequestParam(required = false) String order) {
