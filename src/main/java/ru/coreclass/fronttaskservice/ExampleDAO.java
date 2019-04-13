@@ -53,7 +53,7 @@ public class ExampleDAO {
         }
 
         if (order == null) {
-            order = "id_desc";
+            order = "id_asc";
         }
 
         String orderSQLString="";
