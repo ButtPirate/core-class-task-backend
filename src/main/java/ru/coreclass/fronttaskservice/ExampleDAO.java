@@ -108,7 +108,7 @@ public class ExampleDAO {
         }
 
         Integer totalRows = namedParameterJdbcTemplate.queryForObject(sql, params, Integer.class);
-        return Math.round(totalRows/pageSize);
+        return Math.round(totalRows/pageSize)+1;
 
     }
 
