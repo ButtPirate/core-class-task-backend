@@ -16,8 +16,9 @@ public class ExampleDAO {
     @Autowired
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    List<ExampleDTO> find(Integer id, String name, String order) {
-        String sql = this.buildSelectSQL(id, name, order);
+    @SuppressWarnings("Duplicates")
+    List<ExampleDTO> getDataForPage(Integer id, String name, String order, Integer page, Integer pageSize) {
+        String sql = this.buildPageSQL(id, name, order, page, pageSize);
         Map<String, Object> params = new HashMap<>();
 
         if (id != null) {
@@ -32,7 +33,7 @@ public class ExampleDAO {
 
     }
 
-    private String buildSelectSQL(Integer id, String name, String order) {
+    private String buildPageSQL(Integer id, String name, String order, Integer page, Integer pageSize) {
         StringBuilder builder = new StringBuilder();
 
         builder.append("SELECT * FROM test_data");
@@ -82,6 +83,55 @@ public class ExampleDAO {
         }
 
         builder.append(orderSQLString);
+
+        Integer offset = page * pageSize;
+
+        builder.append(" OFFSET ").append(offset);
+
+        builder.append(" LIMIT ").append(pageSize);
+
+
+        return builder.toString();
+    }
+
+    Integer getTotalPages(Integer id, String name, Integer pageSize) {
+        String sql = this.buildTotalPagesSQL(id, name);
+
+        Map<String, Object> params = new HashMap<>();
+
+        if (id != null) {
+            params.put("id", id);
+        }
+
+        if (name != null) {
+            params.put("name", name);
+        }
+
+        Integer totalRows = namedParameterJdbcTemplate.queryForObject(sql, params, Integer.class);
+        return Math.round(totalRows/pageSize);
+
+    }
+
+    private String buildTotalPagesSQL(Integer id, String name) {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("SELECT count(*) FROM test_data");
+
+        boolean whereCounter = false;
+
+        if (id != null) {
+            builder.append(" WHERE id = :id");
+            whereCounter = true;
+        }
+
+        if (name != null) {
+            if (whereCounter) {
+                builder.append(" AND name = :name");
+            } else {
+                builder.append(" WHERE name = :name");
+            }
+        }
+
         return builder.toString();
     }
 

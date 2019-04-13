@@ -17,9 +17,20 @@ public class Controller {
     ExampleDAO exampleDAO;
 
     @GetMapping("/api/table")
-    public List<ExampleDTO> testMethod(@RequestParam(required = false) Integer id,
-                                       @RequestParam(required = false) String name,
-                                       @RequestParam(required = false) String order) {
-        return exampleDAO.find(id, name, order);
+    public ResponseDTO table(@RequestParam(required = false) Integer id,
+                                  @RequestParam(required = false) String name,
+                                  @RequestParam(required = false) String order,
+                                  @RequestParam Integer page,
+                                  @RequestParam Integer pageSize,
+                                  @RequestParam boolean withTotal) {
+        List<ExampleDTO> result = exampleDAO.getDataForPage(id, name, order, page, pageSize);
+
+        Integer pages = null;
+
+        if (withTotal) {
+            pages = exampleDAO.getTotalPages(id, name, pageSize);
+        }
+
+        return new ResponseDTO(result, pages);
     }
 }
