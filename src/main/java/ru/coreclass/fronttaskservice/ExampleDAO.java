@@ -45,7 +45,7 @@ public class ExampleDAO {
         }
 
         if (name != null) {
-            if (!whereCounter) {
+            if (whereCounter) {
                 builder.append(" AND name = :name");
             } else {
                 builder.append(" WHERE name = :name");
