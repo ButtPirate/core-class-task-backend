@@ -26,7 +26,7 @@ public class ExampleDAO {
         }
 
         if (name != null) {
-            params.put("name", name);
+            params.put("name", "%"+name+"%");
         }
 
         return namedParameterJdbcTemplate.query(sql, params, new ExampleMapper());
@@ -47,9 +47,9 @@ public class ExampleDAO {
 
         if (name != null) {
             if (whereCounter) {
-                builder.append(" AND name = :name");
+                builder.append(" AND name LIKE :name");
             } else {
-                builder.append(" WHERE name = :name");
+                builder.append(" WHERE name LIKE :name");
             }
         }
 
@@ -104,7 +104,7 @@ public class ExampleDAO {
         }
 
         if (name != null) {
-            params.put("name", name);
+            params.put("name", "%"+name+"%");
         }
 
         Integer totalRows = namedParameterJdbcTemplate.queryForObject(sql, params, Integer.class);
@@ -126,9 +126,9 @@ public class ExampleDAO {
 
         if (name != null) {
             if (whereCounter) {
-                builder.append(" AND name = :name");
+                builder.append(" AND name LIKE :name");
             } else {
-                builder.append(" WHERE name = :name");
+                builder.append(" WHERE name LIKE :name");
             }
         }
 
