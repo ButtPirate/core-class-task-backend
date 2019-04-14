@@ -1,0 +1,62 @@
+2019-04-14 22:05:46.527  INFO 4556 --- [main] r.c.f.FrontTaskServiceApplication        : Starting FrontTaskServiceApplication on LAPTOP6 with PID 4556 (C:\Users\Stef6\user-files\projects\core-class_test-app\example-app-back\target\classes started by Stef6 in C:\Users\Stef6\user-files\projects\core-class_test-app\example-app-back)
+2019-04-14 22:05:46.530  INFO 4556 --- [main] r.c.f.FrontTaskServiceApplication        : No active profile set, falling back to default profiles: default
+2019-04-14 22:05:47.477  INFO 4556 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$26a734af] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-14 22:05:47.491  INFO 4556 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a726e77d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-14 22:05:47.849  INFO 4556 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-04-14 22:05:47.874  INFO 4556 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-14 22:05:47.874  INFO 4556 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-04-14 22:05:47.964  INFO 4556 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-14 22:05:47.965  INFO 4556 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1390 ms
+2019-04-14 22:05:48.747  INFO 4556 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-14 22:05:49.216  INFO 4556 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-04-14 22:05:49.222  INFO 4556 --- [main] r.c.f.FrontTaskServiceApplication        : Started FrontTaskServiceApplication in 3.097 seconds (JVM running for 3.957)
+2019-04-14 22:16:46.033  INFO 9704 --- [main] r.c.f.FrontTaskServiceApplication        : Starting FrontTaskServiceApplication on LAPTOP6 with PID 9704 (C:\Users\Stef6\user-files\projects\core-class_test-app\example-app-back\target\classes started by Stef6 in C:\Users\Stef6\user-files\projects\core-class_test-app\example-app-back)
+2019-04-14 22:16:46.036  INFO 9704 --- [main] r.c.f.FrontTaskServiceApplication        : No active profile set, falling back to default profiles: default
+2019-04-14 22:16:47.068  INFO 9704 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$f2e64e4a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-14 22:16:47.079  INFO 9704 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$73660118] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-14 22:16:47.452  INFO 9704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-04-14 22:16:47.476  INFO 9704 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-14 22:16:47.476  INFO 9704 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-04-14 22:16:47.565  INFO 9704 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-14 22:16:47.567  INFO 9704 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1481 ms
+2019-04-14 22:16:47.827  WARN 9704 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'controller': Unsatisfied dependency expressed through field 'storageService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'storageService': Unsatisfied dependency expressed through field 'logger'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'java.util.logging.Logger' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2019-04-14 22:16:47.830  INFO 9704 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-04-14 22:16:47.840  INFO 9704 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-04-14 22:16:47.930 ERROR 9704 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field logger in ru.coreclass.fronttaskservice.StorageService required a bean of type 'java.util.logging.Logger' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'java.util.logging.Logger' in your configuration.
+
+2019-04-14 22:21:41.331  INFO 5732 --- [main] r.c.f.ExampleAppApplication              : Starting ExampleAppApplication on LAPTOP6 with PID 5732 (C:\Users\Stef6\user-files\projects\core-class_test-app\example-app-back\target\classes started by Stef6 in C:\Users\Stef6\user-files\projects\core-class_test-app\example-app-back)
+2019-04-14 22:21:41.335  INFO 5732 --- [main] r.c.f.ExampleAppApplication              : No active profile set, falling back to default profiles: default
+2019-04-14 22:21:42.247  INFO 5732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$1531ac5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-14 22:21:42.257  INFO 5732 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$81d2cd93] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-14 22:21:42.635  INFO 5732 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-04-14 22:21:42.659  INFO 5732 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-14 22:21:42.659  INFO 5732 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-04-14 22:21:42.748  INFO 5732 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-14 22:21:42.749  INFO 5732 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1371 ms
+2019-04-14 22:21:43.636  INFO 5732 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-14 22:21:44.155  INFO 5732 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-04-14 22:21:44.159  INFO 5732 --- [main] r.c.f.ExampleAppApplication              : Started ExampleAppApplication in 3.236 seconds (JVM running for 4.01)
+2019-04-14 22:21:48.591  INFO 5732 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-14 22:21:48.592  INFO 5732 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-04-14 22:21:48.616  INFO 5732 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 23 ms
+2019-04-14 22:21:48.702  INFO 5732 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-04-14 22:21:48.818  INFO 5732 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-04-14 22:21:48.838  INFO 5732 --- [http-nio-8080-exec-1] r.c.f.ExampleAppApplication              : Saved file: ed06613b55a345faace91cc8d7e361f4_GKN9E.jpeg
