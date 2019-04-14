@@ -16,6 +16,9 @@ public class Controller {
     @Autowired
     ExampleDAO exampleDAO;
 
+    @Autowired
+    StorageService storageService;
+
     @GetMapping("/api/table")
     public ResponseDTO table(@RequestParam(required = false) Integer id,
                                   @RequestParam(required = false) String name,
@@ -33,4 +36,12 @@ public class Controller {
 
         return new ResponseDTO(result, pages);
     }
+
+    @GetMapping("/api/files")
+    public List<String> getFiles() {
+        return storageService.getFiles();
+    }
+
+
+
 }
