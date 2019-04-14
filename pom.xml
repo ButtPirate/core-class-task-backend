@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ru.coreclass</groupId>
-    <artifactId>front-task-service</artifactId>
-    <version>0.3</version>
-    <name>front-task-service</name>
-    <description>REST service for frontend task</description>
+    <artifactId>example-app-back</artifactId>
+    <version>1.0</version>
+    <name>Example app - backend</name>
+    <description>REST service for task</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -46,6 +46,11 @@
             <groupId>org.springframework.restdocs</groupId>
             <artifactId>spring-restdocs-mockmvc</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
         </dependency>
     </dependencies>
 

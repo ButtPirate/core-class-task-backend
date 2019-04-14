@@ -2,10 +2,10 @@ package ru.coreclass.fronttaskservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -40,6 +40,12 @@ public class Controller {
     @GetMapping("/api/files")
     public List<String> getFiles() {
         return storageService.getFiles();
+    }
+
+    @PostMapping("/api/file")
+    public void upload(@RequestBody MultipartFile file) throws IOException {
+        storageService.saveFile(file);
+
     }
 
 

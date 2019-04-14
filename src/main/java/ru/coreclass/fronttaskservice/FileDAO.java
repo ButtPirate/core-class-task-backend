@@ -12,9 +12,14 @@ public class FileDAO {
     JdbcTemplate jdbcTemplate;
 
     public List<String> getFiles() {
-        String sql = "SELECT filename FROM files";
+        String sql = "SELECT original_filename FROM files";
 
         return jdbcTemplate.queryForList(sql, String.class);
     }
 
+    public void createFileRecord(String originalFilename, String savedFilename) {
+        String sql = "INSERT INTO files (timestamp, original_filename, saved_filename) VALUES (NOW(), ?, ?)";
+
+        jdbcTemplate.update(sql, originalFilename, savedFilename);
+    }
 }
