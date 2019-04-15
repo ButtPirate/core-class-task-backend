@@ -44,8 +44,13 @@ public class Controller {
 
     @PostMapping("/api/file")
     public void upload(@RequestBody MultipartFile file) throws IOException {
-        storageService.saveFile(file);
+        storageService.saveFile(file, null);
 
+    }
+
+    @PostMapping("/api/process")
+    public void process(@RequestBody MultipartFile file) throws IOException {
+        storageService.processFile(file);
     }
 
 

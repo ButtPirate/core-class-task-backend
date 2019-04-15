@@ -17,9 +17,16 @@ public class FileDAO {
         return jdbcTemplate.queryForList(sql, String.class);
     }
 
-    public void createFileRecord(String originalFilename, String savedFilename) {
-        String sql = "INSERT INTO files (timestamp, original_filename, saved_filename) VALUES (NOW(), ?, ?)";
+    public void createFileRecord(String originalFilename, String savedFilename, Integer contentId) {
+        String sql = "INSERT INTO files (timestamp, original_filename, saved_filename, content_id) VALUES (NOW(), ?, ?, ?)";
 
-        jdbcTemplate.update(sql, originalFilename, savedFilename);
+        jdbcTemplate.update(sql, originalFilename, savedFilename, contentId);
+    }
+
+    public Integer saveContent(String content) {
+        String sql = "INSERT INTO content (content) VALUES (?)";
+
+        return jdbcTemplate.update(sql, content);
+
     }
 }

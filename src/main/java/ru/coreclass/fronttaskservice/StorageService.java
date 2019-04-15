@@ -27,17 +27,20 @@ public class StorageService {
     @Value("${storage.saveDirectory}")
     private String saveDirectory;
 
+    @Value("${storage.tempDirectory}")
+    private String tempDirectory;
+
     public List<String> getFiles() {
         return fileDAO.getFiles();
 
     }
 
 
-    public void saveFile(MultipartFile file) throws IOException {
+    public void saveFile(MultipartFile file, Integer contentId) throws IOException {
         if (file.isEmpty()) {return;}
 
         String savedFilename = this.saveFileOnDisk(file);
-        fileDAO.createFileRecord(file.getOriginalFilename(), savedFilename);
+        fileDAO.createFileRecord(file.getOriginalFilename(), savedFilename, contentId);
 
         logger.info("Saved file: " + savedFilename);
 
@@ -57,6 +60,41 @@ public class StorageService {
         }
 
         return generatedFilename;
+
+    }
+
+    private void saveFileToTemp(MultipartFile file) throws IOException {
+        Path rootLocation = Paths.get(this.tempDirectory);
+        try (InputStream inputStream = file.getInputStream()) {
+            Files.copy(inputStream, rootLocation.resolve(file.getOriginalFilename()),
+                    StandardCopyOption.REPLACE_EXISTING);
+        }
+    }
+
+    private Integer processContent(MultipartFile file) throws IOException {
+        String content = new String(file.getBytes());
+
+        return fileDAO.saveContent(content);
+
+    }
+
+    public void processFile(MultipartFile file) throws IOException {
+        if (file.isEmpty()) {return;}
+
+        this.saveFileToTemp(file);
+
+        Integer contentId = this.processContent(file);
+
+        this.saveFile(file, contentId);
+
+        this.deleteFromTemp(file.getOriginalFilename());
+
+    }
+
+    private void deleteFromTemp(String filename) throws IOException {
+        Path tempFolder = Paths.get(this.tempDirectory);
+
+        Files.delete(tempFolder.resolve(filename));
 
     }
 }
